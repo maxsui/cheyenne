@@ -9,9 +9,45 @@
   </head>
 
   <body>
-		<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+		<div id="wrapper">
+			<nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="<%= root_path %>">Cheyenne</a>
+				</div>
 
-    <%= yield %>
+        <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+								<%= link_to edit_user_registration_path do %>
+								<i class="fa fa-user fa-fw"></i> Votre Profil
+								<% end %>
+							</li>
+              <li class="divider"></li>
+              <li>
+								<%= link_to destroy_user_session_path, method: :delete do %>
+								  <i class="fa fa-sign-out fa-fw"></i> Se déconnecter
+								<% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+			</nav>
+
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header"><%= yield :title %></h1>
+					</div>
+				</div>
+				<div class="row">
+					<%= render "flash" %>
+				</div>
+				<%= yield %>
+			</div>
+		</div>
   </body>
 </html>
