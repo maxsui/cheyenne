@@ -1,0 +1,8 @@
+<% content_for :title, "Détail de l'Objectif" %>
+
+<p><%= @goal.name %></p>
+
+<p><label>Catégorie:</label> <%= @goal.goal_category.try :name %></p>
+
+<%= link_to 'Editer', edit_goal_path(@goal), class: "btn btn-primary" %>
+<%= link_to 'Supprimer', goal_path(@goal), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

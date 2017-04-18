@@ -1,0 +1,6 @@
+<% content_for :title, "Nouvel Catégorie d'Objectif" %>
+
+<%= simple_form_for @goal_category do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit %>
+<% end %>

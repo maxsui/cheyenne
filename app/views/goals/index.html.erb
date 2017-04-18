@@ -1,0 +1,40 @@
+<% content_for :title, "Objectifs" %>
+
+<div class="row">
+	<div class=".col-md-8">
+		<% if @goals.present? %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Catégorie</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @goals.each do |goal| %>
+					<tr>
+						<td><%= goal.name %></td>
+						<td><%= goal.goal_category.try :name %></td>
+						<td>
+							<%= link_to goal_path(goal) do %>
+							<i class="fa fa-eye fa-fw"></i>
+							<% end %>
+							<%= link_to edit_goal_path(goal) do %>
+							<i class="fa fa-edit fa-fw"></i>
+							<% end %>
+							<%= link_to goal_path(goal), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
+							<i class="fa fa-trash-o fa-fw"></i>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<%= link_to 'Ajouter', new_goal_path, class: "btn btn-primary" %>

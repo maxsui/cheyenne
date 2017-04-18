@@ -1,0 +1,5 @@
+<%= simple_form_for @goal do |f| %>
+  <%= f.input :name %>
+	<%= f.input :goal_category_id, collection: @categories, include_blank: false %>
+  <%= f.button :submit %>
+<% end %>
