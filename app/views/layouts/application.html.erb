@@ -49,6 +49,11 @@
 								<i class="fa fa-hashtag fa-fw"></i> Catégories d'Objectifs
 								<% end %>
               </li>
+							<li>
+								<%= link_to observables_path do %>
+								<i class="fa fa-search fa-fw"></i> Observations
+								<% end %>
+              </li>
             </ul>
           </div>
         </div>
@@ -57,7 +62,12 @@
 			<div id="page-wrapper">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header"><%= yield :title %></h1>
+						<h1 class="page-header">
+							<%= yield :title %>
+							<span class="actions">
+								<%= yield :actions %>
+							</span>
+						</h1>
 					</div>
 				</div>
 				<div class="row">

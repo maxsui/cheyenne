@@ -1,0 +1,14 @@
+<% content_for :title, "Détail de l'Observation" %>
+
+<p><%= @observable.name %></p>
+
+<h2>Objectifs associés</h2>
+
+<ul>
+<% @observable.goals.each do |goal| %>
+<li><%= goal.name %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Editer', edit_observable_path(@observable), class: "btn btn-primary" %>
+<%= link_to 'Supprimer', observable_path(@observable), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

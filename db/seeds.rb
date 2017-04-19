@@ -11,3 +11,10 @@ User.find_or_create_by!(email: 'admin@example.com') do |admin|
   puts "Admin password: #{generated_password}"
   admin.password = generated_password
 end
+
+if Observable.count == 0
+  observables = File.readlines(File.expand_path('../seeds-observables.csv', __FILE__))
+  observables.each do |name|
+    Observable.find_or_create_by!(name: name)
+  end
+end

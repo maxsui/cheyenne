@@ -1,0 +1,53 @@
+<% content_for :title, "Observations" %>
+
+<% content_for :actions do %>
+  <%= link_to icon(:plus), new_observable_path, class: "btn btn-primary" %>
+<% end %>
+
+<%= form_tag '', method: :get do %>
+<div class="form-group input-group">
+<%= text_field_tag :q, params[:q], class: "form-control" %>
+<span class="input-group-btn">
+  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+</span>
+</div>
+<% end %>
+
+<div class="row">
+	<div class=".col-md-8">
+		<% if @observables.present? %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Objectifs</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @observables.each do |observable| %>
+					<tr>
+						<td><%= observable.name %></td>
+						<td><%= observable.goals.count %></td>
+						<td>
+							<%= link_to observable_path(observable) do %>
+							<i class="fa fa-eye fa-fw"></i>
+							<% end %>
+							<%= link_to edit_observable_path(observable) do %>
+							<i class="fa fa-edit fa-fw"></i>
+							<% end %>
+							<%= link_to observable_path(observable), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
+							<i class="fa fa-trash-o fa-fw"></i>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<%= paginate @observables %>

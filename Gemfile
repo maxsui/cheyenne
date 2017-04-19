@@ -38,6 +38,8 @@ gem 'devise'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'cocoon'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

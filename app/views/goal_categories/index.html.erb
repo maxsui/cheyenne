@@ -1,5 +1,9 @@
 <% content_for :title, "Catégories d'Objectifs" %>
 
+<% content_for :actions do %>
+  <%= link_to icon(:plus), new_goal_category_path, class: "btn btn-primary" %>
+<% end %>
+
 <div class="row">
 	<div class=".col-md-8">
 		<% if @goal_categories.present? %>
@@ -31,5 +35,3 @@
 		<% end %>
 	</div>
 </div>
-
-<%= link_to 'Ajouter', new_goal_category_path, class: "btn btn-primary" %>

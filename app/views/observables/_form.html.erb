@@ -1,0 +1,11 @@
+<%= simple_form_for @observable do |f| %>
+  <%= f.input :name %>
+
+	<div id="goal_observables">
+  <%= f.simple_fields_for :goal_observables do |goal_observable| %>
+    <%= render 'goal_observable_fields', f: goal_observable %>
+  <% end %>
+  <%= link_to_add_association 'Ajouter un Objectif', f, :goal_observables %>
+	</div>
+  <%= f.button :submit %>
+<% end %>
