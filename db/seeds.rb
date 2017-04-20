@@ -28,6 +28,13 @@ if Goal.count == 0
   end
 end
 
+if Customer.count == 0
+  puts "✓ Create customers"
+  50.times do
+    Customer.find_or_create_by! name: Faker::Name.name
+  end
+end
+
 User.find_or_create_by!(email: 'admin@example.com') do |admin|
   puts "✓ Create default user"
   generated_password = SecureRandom.hex

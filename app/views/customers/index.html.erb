@@ -1,0 +1,42 @@
+<% content_for :title, "Patient(e)s" %>
+
+<% content_for :actions do %>
+  <%= link_to icon(:plus), new_customer_path, class: "btn btn-primary" %>
+<% end %>
+
+<div class="row">
+	<div class=".col-md-8">
+		<% if @customers.present? %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @customers.each do |customer| %>
+					<tr>
+						<td><%= customer.name %></td>
+						<td>
+							<%= link_to customer_path(customer) do %>
+							<i class="fa fa-eye fa-fw"></i>
+							<% end %>
+							<%= link_to edit_customer_path(customer) do %>
+							<i class="fa fa-edit fa-fw"></i>
+							<% end %>
+							<%= link_to customer_path(customer), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
+							<i class="fa fa-trash-o fa-fw"></i>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<%= paginate @customers %>
