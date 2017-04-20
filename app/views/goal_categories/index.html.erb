@@ -12,6 +12,7 @@
 				<thead>
 					<tr>
 						<th>Nom</th>
+						<th>Objectifs</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -19,6 +20,7 @@
 					<% @goal_categories.each do |goal_category| %>
 					<tr>
 						<td><%= goal_category.name %></td>
+						<td><%= goal_category.goals.count %></td>
 						<td>
 							<%= link_to edit_goal_category_path(goal_category) do %>
 							<i class="fa fa-edit fa-fw"></i>
@@ -35,3 +37,5 @@
 		<% end %>
 	</div>
 </div>
+
+<%= paginate @goal_categories %>

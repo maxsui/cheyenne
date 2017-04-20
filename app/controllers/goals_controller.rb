@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
 
   def index
-    @goals = Goal.includes(:goal_category).all
+    @goals = Goal.includes(:goal_category).joins(:goal_category).order("goal_categories.name", :name).page(params[:page]).per(20)
   end
 
   def show
