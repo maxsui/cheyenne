@@ -14,7 +14,7 @@ class ObservablesController < ApplicationController
 
   def new
     @observable = Observable.new
-    @goals = Goal.all
+    @goal_categories = GoalCategory.all
   end
 
   def create
@@ -22,14 +22,14 @@ class ObservablesController < ApplicationController
     if @observable.save
       redirect_to @observable
     else
-      @goals = Goal.all
+      @goal_categories = GoalCategory.all
       render "new"
     end
   end
 
   def edit
     @observable = Observable.find params[:id]
-    @goals = Goal.all
+    @goal_categories = GoalCategory.all
   end
 
   def update
@@ -38,7 +38,7 @@ class ObservablesController < ApplicationController
     if @observable.update observable_params
       redirect_to observables_path
     else
-      @goals = Goal.all
+      @goal_categories = GoalCategory.all
       render "edit"
     end
   end
