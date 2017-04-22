@@ -1,5 +1,16 @@
 .actions {
 		text-align: left;
 		position: absolute;
+}
+
+h1 {
+		.actions {
 		right: 13px;
+		}
+}
+
+h3 {
+		.actions {
+		right: 30px;
+		}
 }

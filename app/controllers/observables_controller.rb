@@ -36,7 +36,7 @@ class ObservablesController < ApplicationController
     @observable = Observable.find params[:id]
 
     if @observable.update observable_params
-      redirect_to observables_path
+      redirect_to @observable
     else
       @goal_categories = GoalCategory.all
       render "edit"
