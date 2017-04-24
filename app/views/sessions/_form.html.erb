@@ -14,5 +14,16 @@
 		<% end %>
 	</div>
 
+	<h3>Encadrants
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :session_users, "data-association-insertion-node": '#session_users', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="session_users">
+		<%= f.simple_fields_for :session_users do |session_user| %>
+      <%= render 'session_user_fields', f: session_user %>
+		<% end %>
+	</div>
+
   <%= f.button :submit %>
 <% end %>

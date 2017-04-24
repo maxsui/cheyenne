@@ -23,6 +23,7 @@
 						<th>Début</th>
 						<th>Durée</th>
 						<th>Participants</th>
+						<th>Encadrants</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -32,6 +33,7 @@
 						<td><%= l session.begin, format: (@date ? "%Hh%M" : :short) %></td>
 						<td><%= human_duration session.duration %></td>
 						<td><%= session.customers.count %></td>
+						<td><%= session.users.map(&:name).join(',') %></td>
 						<td>
 							<%= link_to session_path(session) do %>
 							<i class="fa fa-eye fa-fw"></i>

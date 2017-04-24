@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
   def new
     @session = Session.new
     @customers = Customer.order(:name).all
+    @users = User.order(:name).all
   end
 
   def create
@@ -25,6 +26,7 @@ class SessionsController < ApplicationController
       redirect_to @session
     else
       @customers = Customer.order(:name).all
+      @users = User.order(:name).all
       render "new"
     end
   end
@@ -32,6 +34,7 @@ class SessionsController < ApplicationController
   def edit
     @session = Session.find params[:id]
     @customers = Customer.order(:name).all
+    @users = User.order(:name).all
   end
 
   def update
@@ -41,6 +44,7 @@ class SessionsController < ApplicationController
       redirect_to @session
     else
       @customers = Customer.order(:name).all
+      @users = User.order(:name).all
       render "edit"
     end
   end
@@ -55,7 +59,7 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:begin, :end, session_customers_attributes: [:id, :customer_id, :_destroy])
+    params.require(:session).permit(:begin, :end, session_customers_attributes: [:id, :customer_id, :_destroy], session_users_attributes: [:id, :user_id, :_destroy])
   end
 
 end

@@ -4,6 +4,11 @@ class Session < ApplicationRecord
 
   has_many :customers, through: :session_customers
 
+  has_many :session_users
+  accepts_nested_attributes_for :session_users, reject_if: :all_blank, allow_destroy: true
+
+  has_many :users, through: :session_users
+
   def self.by_date(date)
     time = date.to_time
     where(begin: (time.beginning_of_day)..(time.end_of_day))
