@@ -1,0 +1,15 @@
+<% content_for :title, "Séance" %>
+
+<p><%= l @session.begin %></p>
+<p><%= l @session.end %></p>
+
+<h3>Participants</h3>
+
+<ul>
+	<% @session.customers.each do |customer| %>
+	<li><%= customer.name %></li>
+	<% end %>
+</ul>
+
+<%= link_to 'Editer', edit_session_path(@session), class: "btn btn-primary" %>
+<%= link_to 'Supprimer', session_path(@session), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

@@ -1,0 +1,57 @@
+<% content_for :title, @date ? "Séances du #{l @date}" : "Séances" %>
+
+<% content_for :actions do %>
+  <%= link_to icon(:plus), new_session_path, class: "btn btn-primary" %>
+<% end %>
+
+<div class="row">
+	<% if @date %>
+	<div class=".col-md-8">
+		<div class="date-search">
+			<%= link_to icon("chevron-left"), date:(@date - 1).strftime %>
+			<%= @date == Date.today ? "Aujourd'hui" : (l @date) %>
+			<%= link_to icon("chevron-right"), date:(@date + 1).strftime %>
+		</div>
+	</div>
+	<% end %>
+	<div class=".col-md-8">
+		<% if @sessions.present? %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Début</th>
+						<th>Durée</th>
+						<th>Participants</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @sessions.each do |session| %>
+					<tr>
+						<td><%= l session.begin, format: (@date ? "%Hh%M" : :short) %></td>
+						<td><%= human_duration session.duration %></td>
+						<td><%= session.customers.count %></td>
+						<td>
+							<%= link_to session_path(session) do %>
+							<i class="fa fa-eye fa-fw"></i>
+							<% end %>
+							<%= link_to edit_session_path(session) do %>
+							<i class="fa fa-edit fa-fw"></i>
+							<% end %>
+							<%= link_to session_path(session), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
+							<i class="fa fa-trash-o fa-fw"></i>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% else %>
+		Aucune séance <% if @date %>à cette date<% end %>
+		<% end %>
+	</div>
+</div>
+
+<%= paginate @sessions %>

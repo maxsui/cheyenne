@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420170153) do
+ActiveRecord::Schema.define(version: 20170422155820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,22 @@ ActiveRecord::Schema.define(version: 20170420170153) do
 
   create_table "observables", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "session_customers", force: :cascade do |t|
+    t.bigint "session_id"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_session_customers_on_customer_id"
+    t.index ["session_id"], name: "index_session_customers_on_session_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "begin"
+    t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
