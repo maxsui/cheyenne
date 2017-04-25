@@ -9,6 +9,11 @@
 		</span>
 	</h3>
 	<div id="session_customers">
+		<% if @session.errors.key?(:session_customers) %>
+		<% @session.errors.full_messages_for(:session_customers).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
 		<%= f.simple_fields_for :session_customers do |session_customer| %>
       <%= render 'session_customer_fields', f: session_customer %>
 		<% end %>
@@ -20,6 +25,11 @@
 		</span>
 	</h3>
 	<div id="session_users">
+		<% if @session.errors.key?(:session_users) %>
+		<% @session.errors.full_messages_for(:session_users).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
 		<%= f.simple_fields_for :session_users do |session_user| %>
       <%= render 'session_user_fields', f: session_user %>
 		<% end %>

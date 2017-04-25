@@ -9,6 +9,12 @@ class Session < ApplicationRecord
 
   has_many :users, through: :session_users
 
+  validates :begin, presence: true
+  validates :end, presence: true
+
+  validates :session_customers, presence: true
+  validates :session_users, presence: true
+
   def self.by_date(date)
     time = date.to_time
     where(begin: (time.beginning_of_day)..(time.end_of_day))
