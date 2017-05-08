@@ -23,4 +23,8 @@ class Session < ApplicationRecord
   def duration
     self.end - self.begin
   end
+
+  def date
+    self.begin.to_date
+  end
 end

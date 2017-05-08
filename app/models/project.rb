@@ -18,8 +18,14 @@ class Project < ApplicationRecord
 
   validate :check_range_conflict
 
+  scope :by_date, ->(date) { where("?::date <@ daterange(projects.begin, projects.end,'[]')", date) }
   scope :by_period, ->(range) { where("daterange(projects.begin, projects.end,'[]') && daterange(?, ?, '[]')", range.begin, range.end) }
   scope :by_customer, ->(customer) { where customer: customer }
+  scope :inactive, -> { where.not("?::date <@ daterange(projects.begin, projects.end,'[]')", Date.today) }
+
+  def self.current
+    by_date(Date.today).first
+  end
 
   before_validation :complete_observables
 

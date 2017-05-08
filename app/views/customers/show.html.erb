@@ -1,4 +1,30 @@
 <% content_for :title, @customer.name %>
 
+<div class="row">
+Projet en cours :
+<% if project = @customer.projects.current %>
+  <%= link_to project_path(project) do %>
+    Du <%= l project.begin %> au <%= l project.end %>
+  <% end %>
+<% else %>
+aucun
+<% end %>
+</div>
+
+<div class="row">
+<% if (other_projects = @customer.projects.inactive).present? %>
+<h3>Projets inactifs</h3>
+<ul>
+	<% other_projects.each do |project| %>
+	<li>
+		<%= link_to project_path(project) do %>
+		Du <%= l project.begin %> au <%= l project.end %>
+		<% end %>
+	</li>
+	<% end %>
+</ul>
+<% end %>
+</div>
+
 <%= link_to 'Modifier', edit_customer_path(@customer), class: "btn btn-primary" %>
 <%= link_to 'Supprimer', customer_path(@customer), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" } %>
