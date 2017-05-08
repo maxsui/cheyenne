@@ -15,7 +15,7 @@
 	</div>
 	<% end %>
 	<div class="col-md-12">
-		<% if @sessions.present? %>
+		<% if @sceances.present? %>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -28,20 +28,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @sessions.each do |session| %>
+					<% @sceances.each do |sceance| %>
 					<tr>
-						<td><%= l session.begin, format: (@date ? "%Hh%M" : :short) %></td>
-						<td><%= human_duration session.duration %></td>
-						<td><%= session.customers.count %></td>
-						<td><%= session.users.map(&:name).join(',') %></td>
+						<td><%= l sceance.begin, format: (@date ? "%Hh%M" : :short) %></td>
+						<td><%= human_duration sceance.duration %></td>
+						<td><%= sceance.customers.count %></td>
+						<td><%= sceance.users.map(&:name).join(',') %></td>
 						<td>
-							<%= link_to sceance_path(session) do %>
+							<%= link_to sceance_path(sceance) do %>
 							<i class="fa fa-eye fa-fw"></i>
 							<% end %>
-							<%= link_to edit_sceance_path(session) do %>
+							<%= link_to edit_sceance_path(sceance) do %>
 							<i class="fa fa-edit fa-fw"></i>
 							<% end %>
-							<%= link_to sceance_path(session), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
+							<%= link_to sceance_path(sceance), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
 							<i class="fa fa-trash-o fa-fw"></i>
 							<% end %>
 						</td>
@@ -56,4 +56,4 @@
 	</div>
 </div>
 
-<%= paginate @sessions %>
+<%= paginate @sceances %>

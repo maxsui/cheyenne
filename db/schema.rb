@@ -78,39 +78,39 @@ ActiveRecord::Schema.define(version: 20170508121623) do
     t.index ["customer_id"], name: "index_projects_on_customer_id"
   end
 
-  create_table "session_customer_observables", force: :cascade do |t|
-    t.bigint "session_customer_id"
+  create_table "sceance_customer_observables", force: :cascade do |t|
+    t.bigint "sceance_customer_id"
     t.bigint "project_observable_id"
     t.integer "note"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_observable_id"], name: "index_session_customer_observables_on_project_observable_id"
-    t.index ["session_customer_id"], name: "index_session_customer_observables_on_session_customer_id"
-    t.index ["user_id"], name: "index_session_customer_observables_on_user_id"
+    t.index ["project_observable_id"], name: "index_sceance_customer_observables_on_project_observable_id"
+    t.index ["sceance_customer_id"], name: "index_sceance_customer_observables_on_sceance_customer_id"
+    t.index ["user_id"], name: "index_sceance_customer_observables_on_user_id"
   end
 
-  create_table "session_customers", force: :cascade do |t|
-    t.bigint "session_id"
+  create_table "sceance_customers", force: :cascade do |t|
+    t.bigint "sceance_id"
     t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "project_id"
-    t.index ["customer_id"], name: "index_session_customers_on_customer_id"
-    t.index ["project_id"], name: "index_session_customers_on_project_id"
-    t.index ["session_id"], name: "index_session_customers_on_session_id"
+    t.index ["customer_id"], name: "index_sceance_customers_on_customer_id"
+    t.index ["project_id"], name: "index_sceance_customers_on_project_id"
+    t.index ["sceance_id"], name: "index_sceance_customers_on_sceance_id"
   end
 
-  create_table "session_users", force: :cascade do |t|
-    t.bigint "session_id"
+  create_table "sceance_users", force: :cascade do |t|
+    t.bigint "sceance_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["session_id"], name: "index_session_users_on_session_id"
-    t.index ["user_id"], name: "index_session_users_on_user_id"
+    t.index ["sceance_id"], name: "index_sceance_users_on_sceance_id"
+    t.index ["user_id"], name: "index_sceance_users_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "sceances", force: :cascade do |t|
     t.datetime "begin"
     t.datetime "end"
     t.datetime "created_at", null: false
@@ -135,5 +135,5 @@ ActiveRecord::Schema.define(version: 20170508121623) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "session_customers", "projects"
+  add_foreign_key "sceance_customers", "projects"
 end

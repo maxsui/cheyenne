@@ -15,7 +15,7 @@
 					<% @project.project_goals.each do |project_goal| %>
 					<tr>
 						<td><%= project_goal.goal.name %></td>
-						<td><%= @project.notes[project_goal.goal] %></td>
+						<td><%= @project.notes.fetch(project_goal.goal, '-') %></td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -23,6 +23,7 @@
 		</div>
 		<% end %>
 	</div>
+	<% if @project.notes.present? %>
 	<div class="col-md-4">
 		<canvas id="radar"></canvas>
 	</div>
@@ -56,6 +57,7 @@
       data: data,
       options: options
 		});
+	<% end %>
 	<% end %>
 </div>
 

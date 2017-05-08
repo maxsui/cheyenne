@@ -1,5 +1,5 @@
-class SessionCustomerObservable < ApplicationRecord
-  belongs_to :session_customer
+class SceanceCustomerObservable < ApplicationRecord
+  belongs_to :sceance_customer
   belongs_to :project_observable
   belongs_to :user, optional: true
   has_one :observable, through: :project_observable
