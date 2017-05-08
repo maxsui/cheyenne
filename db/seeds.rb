@@ -35,9 +35,19 @@ if Customer.count == 0
   end
 end
 
-User.find_or_create_by!(email: 'admin@example.com') do |admin|
-  puts "✓ Create default user"
-  generated_password = SecureRandom.hex
-  puts "Admin password: #{generated_password}"
-  admin.password = generated_password
+users = {
+  'sophie@equilinea.fr' => { name: "Sophie"},
+  'blandine@lepiedaletrier.fr' => { name: "Blandine"},
+}
+
+users.each do |email, attributes|
+  User.find_or_create_by!(email: email) do |user|
+    puts "✓ Create user #{email}"
+
+    generated_password = SecureRandom.hex
+    puts "Password: #{generated_password}"
+    user.password = generated_password
+
+    user.attributes = attributes
+  end
 end

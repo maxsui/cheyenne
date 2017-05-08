@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :projects do
     put 'toogle_observable'
   end
-  resources :sessions do
+  resources :sessions, as: 'sceances' do
     resources :session_customers do
       put 'note', on: :member
     end

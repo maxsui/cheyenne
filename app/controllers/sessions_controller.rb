@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
     @session = Session.find params[:id]
     @session.destroy
 
-    redirect_to sessions_path
+    redirect_to sceances_path
   end
 
   private
