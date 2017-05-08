@@ -7,5 +7,4 @@ class ProjectObservable < ApplicationRecord
   def toogle!
     update ignored: !ignored?
   end
-
 end

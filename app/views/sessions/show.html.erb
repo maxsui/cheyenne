@@ -15,7 +15,7 @@
 					<% @session.session_customers.each do |session_customer| %>
 					<tr>
 						<td><%= session_customer.customer.name %></td>
-						<td><%= session_customer.observables.noted.count %> / <%= session_customer.observables.count %></td>
+						<td><%= session_customer.observables.evaluated.count %> / <%= session_customer.observables.count %></td>
 						<td>
 							<%= link_to session_session_customer_path(@session, session_customer) do %>
 							<i class="fa fa-eye fa-fw"></i>

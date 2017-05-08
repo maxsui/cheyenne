@@ -65,6 +65,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chart-js-rails (0.1.2)
+      railties (> 3.1)
     childprocess (0.6.3)
       ffi (~> 1.0, >= 1.0.11)
     cocoon (1.2.9)
@@ -220,6 +222,7 @@ DEPENDENCIES
   bootstrap_sb_admin_base_v2
   byebug
   capybara (~> 2.13.0)
+  chart-js-rails
   cocoon
   coffee-rails (~> 4.2)
   devise

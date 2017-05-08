@@ -6,11 +6,58 @@
 
 <h3>Objectifs</h3>
 
-<ul>
-	<% @project.goals.each do |goal| %>
-	<li><%= goal.name %></li>
+<div class="row">
+	<div class="col-md-8">
+		<% if @project.goals.present? %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<tbody>
+					<% @project.project_goals.each do |project_goal| %>
+					<tr>
+						<td><%= project_goal.goal.name %></td>
+						<td><%= @project.notes[project_goal.goal] %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<canvas id="radar"></canvas>
+	</div>
+	<%= javascript_tag do %>
+ data = {
+    labels: <%= @project.notes.keys.map { |g| truncate(g.name, length: 10) }.to_json.html_safe %>,
+    datasets: [
+        {
+            label: "Objectifs",
+            backgroundColor: "rgba(179,181,198,0.2)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: <%= @project.notes.values.to_json.html_safe %>
+        }
+      ]
+	  };
+
+	options = {
+            scale: {
+                ticks: {
+                    beginAtZero: true
+                }
+            }
+  };
+
+	  new Chart($('#radar'), {
+      type: 'radar',
+      data: data,
+      options: options
+		});
 	<% end %>
-</ul>
+</div>
 
 <h3>Observations</h3>
 

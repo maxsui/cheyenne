@@ -18,6 +18,10 @@ class Project < ApplicationRecord
 
   validate :check_range_conflict
 
+  def session_observables
+    SessionCustomerObservable.joins(project_observable: :project).where("projects.id = ?", id)
+  end
+
   scope :by_date, ->(date) { where("?::date <@ daterange(projects.begin, projects.end,'[]')", date) }
   scope :by_period, ->(range) { where("daterange(projects.begin, projects.end,'[]') && daterange(?, ?, '[]')", range.begin, range.end) }
   scope :by_customer, ->(customer) { where customer: customer }
@@ -36,7 +40,16 @@ class Project < ApplicationRecord
   end
 
   def other_projects_in_conflict
-    self.class.by_period(Range.new(self.begin, self.end)).by_customer(customer)
+    scope = self.class.by_period(Range.new(self.begin, self.end)).by_customer(customer)
+    scope = scope.where.not(id: id) if persisted?
+    scope
+  end
+
+  def notes
+    rows = session_observables.noted.joins(:goals).group("goals.id").average(:note).map do |goal_id, note|
+      [Goal.find(goal_id), note]
+    end
+    Hash[rows]
   end
 
   private
