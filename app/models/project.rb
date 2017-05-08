@@ -36,9 +36,7 @@ class Project < ApplicationRecord
   private
 
   def check_range_conflict
-    Rails.logger.debug("check")
     other_projects_in_conflict.each do |project|
-      Rails.logger.debug("Project: #{project}")
       errors.add :begin, "Un autre projet couvre cette période pour ce client"
       errors.add :end, "Un autre projet couvre cette période pour ce client"
     end
