@@ -1,0 +1,23 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :begin, as: :date, start_year: Date.today.year - 1, end_year: Date.today.year + 1 %>
+	<%= f.input :end, as: :date, start_year: Date.today.year - 1, end_year: Date.today.year + 1 %>
+	<%= f.input :customer_id, collection: @customers, include_blank: false %>
+
+	<h3>Objectifs
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :project_goals, "data-association-insertion-node": '#project_goals', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="project_goals">
+		<% if @project.errors.key?(:project_goals) %>
+		<% @project.errors.full_messages_for(:project_goals).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
+		<%= f.simple_fields_for :project_goals do |project_goal| %>
+      <%= render 'project_goal_fields', f: project_goal %>
+		<% end %>
+	</div>
+
+  <%= f.button :submit %>
+<% end %>

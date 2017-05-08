@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424183010) do
+ActiveRecord::Schema.define(version: 20170425180355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,34 @@ ActiveRecord::Schema.define(version: 20170424183010) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "project_goals", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_project_goals_on_goal_id"
+    t.index ["project_id"], name: "index_project_goals_on_project_id"
+  end
+
+  create_table "project_observables", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "observable_id"
+    t.boolean "ignored"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["observable_id"], name: "index_project_observables_on_observable_id"
+    t.index ["project_id"], name: "index_project_observables_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.date "begin"
+    t.date "end"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_projects_on_customer_id"
   end
 
   create_table "session_customers", force: :cascade do |t|

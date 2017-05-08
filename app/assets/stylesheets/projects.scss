@@ -1,0 +1,27 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.projects.show {
+		#project_observables {
+				tr.project_observable {
+						.action.include {
+								display: none;
+						}
+						.action.exclude {
+								display: inline-block;
+						}
+						&.ignored {
+								td.name {
+										color: #aaa;
+								}
+								.action.include {
+										display: inline-block;
+								}
+								.action.exclude {
+										display: none;
+								}
+						}
+				}
+		}
+}

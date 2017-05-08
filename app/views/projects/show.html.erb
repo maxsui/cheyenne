@@ -1,0 +1,42 @@
+<% content_for :title, "Détails du Projet" %>
+
+<p><label>Client:</label> <%= link_to @project.customer.name, @project.customer %></p>
+
+<p>Du <%= l @project.begin %> au <%= l @project.end %></p>
+
+<h3>Objectifs</h3>
+
+<ul>
+	<% @project.goals.each do |goal| %>
+	<li><%= goal.name %></li>
+	<% end %>
+</ul>
+
+<h3>Observations</h3>
+
+<div class="row">
+	<div class=".col-md-8">
+		<% if @project.observables.present? %>
+		<div class="table-responsive">
+			<table id="project_observables" class="table table-striped">
+				<tbody>
+					<% @project.project_observables.each do |project_observable| %>
+					<tr id="project_observable_<%= project_observable.id %>" class="project_observable <%= 'ignored' if project_observable.ignored? %>">
+						<td class="name"><%= project_observable.observable.name %></td>
+						<td>
+							<%= link_to project_toogle_observable_path(@project), data: { remote: true, params: "project_observable_id=#{project_observable.id}" }, method: :put do %>
+							<i class="action include fa fa-plus fa-fw"></i>
+							<i class="action exclude fa fa-ban fa-fw"></i>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<%= link_to 'Editer', edit_project_path(@project), class: "btn btn-primary" %>
+<%= link_to 'Supprimer', project_path(@project), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

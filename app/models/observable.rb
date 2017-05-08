@@ -5,4 +5,7 @@ class Observable < ApplicationRecord
   has_many :goals, through: :goal_observables
 
   validates :name, presence: true
+
+  scope :by_goal, ->(goals) { joins(:goal_observables).where('goals_observables.goal_id in (?)', Array(goals).map { |g| g.respond_to?(:id) ? g.id : g } ) }
+
 end
