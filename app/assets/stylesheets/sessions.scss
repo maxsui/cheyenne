@@ -9,3 +9,52 @@
 				}
 		}
 }
+
+.session_customers.show {
+		.session_observable {
+				td.note {
+						span {
+								background: #eee;
+								width: 30px;
+								height: 30px;
+								display: inline-block;
+								text-align: center;
+								a {
+										line-height: 30px;
+										vertical-align: middle;
+										display: block;
+								}
+						}
+				}
+				&.noted-0 {
+						span.note-0 {
+								background: #ddd;
+								font-weight: bold;
+						}
+				}
+				&.noted-1 {
+						span.note-1 {
+								background: #ddd;
+								font-weight: bold;
+						}
+				}
+				&.noted-2 {
+						span.note-2 {
+								background: #ddd;
+								font-weight: bold;
+						}
+				}
+				&.noted-3 {
+						span.note-3 {
+								background: #ddd;
+								font-weight: bold;
+						}
+				}
+				&.noted-ignored {
+						span.note-ignored {
+								background: #ddd;
+								font-weight: bold;
+						}
+				}
+		}
+}

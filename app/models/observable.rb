@@ -8,4 +8,8 @@ class Observable < ApplicationRecord
 
   scope :by_goal, ->(goals) { joins(:goal_observables).where('goals_observables.goal_id in (?)', Array(goals).map { |g| g.respond_to?(:id) ? g.id : g } ) }
 
+  def candidates
+    [0, 1, 2, 3]
+  end
+
 end

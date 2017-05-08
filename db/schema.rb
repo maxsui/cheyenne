@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425180355) do
+ActiveRecord::Schema.define(version: 20170508121623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,12 +78,26 @@ ActiveRecord::Schema.define(version: 20170425180355) do
     t.index ["customer_id"], name: "index_projects_on_customer_id"
   end
 
+  create_table "session_customer_observables", force: :cascade do |t|
+    t.bigint "session_customer_id"
+    t.bigint "project_observable_id"
+    t.integer "note"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_observable_id"], name: "index_session_customer_observables_on_project_observable_id"
+    t.index ["session_customer_id"], name: "index_session_customer_observables_on_session_customer_id"
+    t.index ["user_id"], name: "index_session_customer_observables_on_user_id"
+  end
+
   create_table "session_customers", force: :cascade do |t|
     t.bigint "session_id"
     t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
     t.index ["customer_id"], name: "index_session_customers_on_customer_id"
+    t.index ["project_id"], name: "index_session_customers_on_project_id"
     t.index ["session_id"], name: "index_session_customers_on_session_id"
   end
 
@@ -121,4 +135,5 @@ ActiveRecord::Schema.define(version: 20170425180355) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "session_customers", "projects"
 end

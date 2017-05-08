@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   resources :projects do
     put 'toogle_observable'
   end
-  resources :sessions
+  resources :sessions do
+    resources :session_customers do
+      put 'note', on: :member
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'dashboard#show'
