@@ -2,11 +2,11 @@
 class Project < ApplicationRecord
   belongs_to :customer
 
-  has_many :project_goals
+  has_many :project_goals, -> { joins(:goal).order('goals.name') }
   accepts_nested_attributes_for :project_goals, reject_if: :all_blank, allow_destroy: true
   has_many :goals, through: :project_goals
 
-  has_many :project_observables
+  has_many :project_observables, -> { joins(:observable).order('observables.name') }
   # accepts_nested_attributes_for :project_observables, reject_if: :all_blank, allow_destroy: true
   has_many :observables, through: :project_observables
 
