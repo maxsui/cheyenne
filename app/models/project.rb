@@ -33,8 +33,12 @@ class Project < ApplicationRecord
 
   before_validation :complete_observables
 
+  def goal_ids
+    project_goals.map(&:goal_id)
+  end
+
   def complete_observables
-    Observable.by_goal(project_goals.map(&:goal_id)).distinct.each do |observable|
+    Observable.by_goal(goal_ids).distinct.each do |observable|
       project_observables.find_or_initialize_by(observable: observable)
     end
   end
@@ -50,7 +54,7 @@ class Project < ApplicationRecord
   end
 
   def compute_notes
-    rows = sceance_observables.noted.joins(:goals).group("goals.id").average(:note).map do |goal_id, note|
+    rows = sceance_observables.noted.joins(:goals).where('goals.id' => goal_ids).group("goals.id").average(:note).map do |goal_id, note|
       [Goal.find(goal_id), note]
     end
     Hash[rows]
