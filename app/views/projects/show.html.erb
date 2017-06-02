@@ -12,7 +12,7 @@
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<tbody>
-					<% @project.project_goals.each do |project_goal| %>
+					<% @project.project_goals.includes(:goal).each do |project_goal| %>
 					<tr>
 						<td><%= project_goal.goal.name %></td>
 						<td><%= @project.notes.fetch(project_goal.goal, '-') %></td>
@@ -69,7 +69,7 @@
 		<div class="table-responsive">
 			<table id="project_observables" class="table table-striped">
 				<tbody>
-					<% @project.project_observables.each do |project_observable| %>
+					<% @project.project_observables.includes(:observable).each do |project_observable| %>
 					<tr id="project_observable_<%= project_observable.id %>" class="project_observable <%= 'ignored' if project_observable.ignored? %>">
 						<td class="name"><%= project_observable.observable.name %></td>
 						<td>
