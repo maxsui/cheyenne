@@ -13,6 +13,7 @@
 					<tr>
 						<th>Nom</th>
 						<th>Catégorie</th>
+						<th>Observations</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -21,6 +22,7 @@
 					<tr>
 						<td><%= goal.name %></td>
 						<td><%= goal.goal_category.try :name %></td>
+						<td><%= goal.observables.count %></td>
 						<td>
 							<%= link_to goal_path(goal) do %>
 							<i class="fa fa-eye fa-fw"></i>
