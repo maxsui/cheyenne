@@ -17,7 +17,8 @@ class SceanceCustomer < ApplicationRecord
   def complete_observables
     return unless project
 
-    observables.where.not(project: project).delete_all
+
+    observables.joins(:goals).where.not("goals.id": project).delete_all
     project.project_observables.active.each do |project_observable|
       observables.find_or_initialize_by(project_observable: project_observable)
     end
