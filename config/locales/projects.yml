@@ -22,3 +22,6 @@ fr:
       title: "Projets"
     show:
       title: "Détails du projet de %{name}"
+      goals_table:
+        goal: Objectif
+        note: Moyenne (sur 3)

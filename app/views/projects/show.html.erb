@@ -10,12 +10,18 @@
 	<div class="col-md-8">
 		<% if @project.goals.present? %>
 		<div class="table-responsive">
-			<table class="table table-striped">
+			<table id="goals_table" class="table table-striped">
+				<thead>
+					<tr>
+						<th><%= t('.goals_table.goal') %></th>
+						<th><%= t('.goals_table.note') %></th>
+					</tr>
+				</thead>
 				<tbody>
 					<% @project.project_goals.includes(:goal).each do |project_goal| %>
 					<tr>
 						<td><%= project_goal.goal.name %></td>
-						<td><%= @project.notes.fetch(project_goal.goal, '-') %></td>
+						<td class="note"><%= number_with_precision(@project.notes.fetch(project_goal.goal, '-'), precision: 1) %></td>
 					</tr>
 					<% end %>
 				</tbody>
