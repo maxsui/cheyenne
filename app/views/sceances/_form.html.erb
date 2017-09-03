@@ -1,7 +1,6 @@
 <%= simple_form_for @sceance do |f| %>
-  <%= f.input :begin, as: :date, start_year: Date.today.year - 1, end_year: Date.today.year + 1 %>
-  <%= f.input :begin, as: :time, minute_step: 30 %>
-	<%= f.input :end, as: :time, minute_step: 30, default: 1.hour.from_now %>
+  <%= f.input :begin, start_year: Date.today.year - 1, end_year: Date.today.year + 1, minute_step: 30 %>
+	<%= f.input :end, minute_step: 30, default: 1.hour.from_now %>
 
 	<h3>Participants
 		<span class="actions">
