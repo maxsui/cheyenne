@@ -44,7 +44,7 @@ gem 'faker'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'chart-js-rails'
 
-gem 'fullcalendar-rails', path: "/home/alban/Projects/Af83/fullcalendar-rails"
+gem 'fullcalendar-rails', github: 'albanpeignier/fullcalendar-rails', branch: 'upgrade-to-3.5.0'
 gem 'momentjs-rails'
 
 group :development, :test do

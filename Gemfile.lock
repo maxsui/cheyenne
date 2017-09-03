@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/albanpeignier/fullcalendar-rails.git
+  revision: be71e28e06e7b8c9a6c041922bdcfe3588ea957e
+  branch: upgrade-to-3.5.0
+  specs:
+    fullcalendar-rails (3.5.0.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
+
+GIT
   remote: https://github.com/rails/sass-rails.git
   revision: dfbcc6a53653d8908007e26324a0f299f026ec4f
   specs:
@@ -7,14 +17,6 @@ GIT
       sass (~> 3.4)
       sprockets (~> 4.x)
       sprockets-rails (< 4.0)
-
-PATH
-  remote: /home/alban/Projects/Af83/fullcalendar-rails
-  specs:
-    fullcalendar-rails (3.5.0.0)
-      jquery-rails (>= 4.0.5, < 5.0.0)
-      jquery-ui-rails (>= 5.0.2)
-      momentjs-rails (>= 2.9.0)
 
 GEM
   remote: https://rubygems.org/
