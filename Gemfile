@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'devise-i18n'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'jquery-rails'
 gem 'simple_form'
