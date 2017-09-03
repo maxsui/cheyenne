@@ -1,0 +1,18 @@
+fr:
+  activerecord:
+    attributes:
+      goal_category:
+        name: Nom
+        goals: Objectifs
+  helpers:
+    submit:
+      goal_category:
+        create: "Ajouter"
+        update: "Modifier"
+  goal_categories:
+    new:
+      title: "Ajouter une Catégorie d'objectifs"
+    edit:
+      title: "Modifier la Catégorie d'objectifs"
+    index:
+      title: "Catégorie d'objectifs"

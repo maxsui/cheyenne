@@ -2,5 +2,5 @@
 
 <p><%= @goal.name %></p>
 
-<%= link_to 'Editer', edit_goal_path(@goal), class: "btn btn-primary" %>
-<%= link_to 'Supprimer', goal_path(@goal), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>
+<%= link_to t('actions.edit'), edit_goal_path(@goal), class: "btn btn-primary" %>
+<%= link_to t('actions.delete'), goal_path(@goal), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

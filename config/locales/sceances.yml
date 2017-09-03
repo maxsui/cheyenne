@@ -1,0 +1,18 @@
+fr:
+  activerecord:
+    attributes:
+      sceance:
+        begin: 'Début'
+        end: 'Fin'
+  helpers:
+    submit:
+      sceance:
+        create: "Ajouter"
+        update: "Modifier"
+  sceances:
+    new:
+      title: "Ajouter une scéance"
+    index:
+      title: "Scéances"
+    show:
+      title: "Scéance du %{begin}"

@@ -1,0 +1,20 @@
+fr:
+  activerecord:
+    attributes:
+      observable:
+        name: Nom
+        goals: Objectifs associés
+  helpers:
+    submit:
+      observable:
+        create: "Ajouter"
+        update: "Modifier"
+  observables:
+    new:
+      title: "Ajouter une Observation"
+    edit:
+      title: "Modifier l'Observation"
+    index:
+      title: "Observations"
+    show:
+      title: "%{name}"

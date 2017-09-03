@@ -1,4 +1,4 @@
-<% content_for :title, "Détails du Projet" %>
+<% content_for :title, t('.title', name: @project.customer.name) %>
 
 <p><label>Client:</label> <%= link_to @project.customer.name, @project.customer %></p>
 
@@ -87,5 +87,5 @@
 	</div>
 </div>
 
-<%= link_to 'Editer', edit_project_path(@project), class: "btn btn-primary" %>
-<%= link_to 'Supprimer', project_path(@project), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>
+<%= link_to t('actions.edit'), edit_project_path(@project), class: "btn btn-primary" %>
+<%= link_to t('actions.delete'), project_path(@project), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

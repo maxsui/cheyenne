@@ -1,0 +1,24 @@
+fr:
+  activerecord:
+    attributes:
+      project:
+        customer: 'Client(e)'
+        customer_id: 'Client(e)'
+        begin: Début
+        end: Fin
+        goals: Objectifs
+        observables: Observations
+  helpers:
+    submit:
+      project:
+        create: "Ajouter"
+        update: "Modifier"
+  projects:
+    new:
+      title: "Ajouter un Projet"
+    edit:
+      title: "Modifier le Project"
+    index:
+      title: "Projets"
+    show:
+      title: "Détails du projet de %{name}"

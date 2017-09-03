@@ -1,8 +1,6 @@
-<% content_for :title, "Détail de l'Observation" %>
+<% content_for :title, t('.title', name: @observable.name) %>
 
-<p><%= @observable.name %></p>
-
-<h2>Objectifs associés</h2>
+<h2><%= Observable.human_attribute_name(:goals) %></h2>
 
 <ul>
 <% @observable.goals.each do |goal| %>
@@ -10,5 +8,5 @@
 <% end %>
 </ul>
 
-<%= link_to 'Editer', edit_observable_path(@observable), class: "btn btn-primary" %>
-<%= link_to 'Supprimer', observable_path(@observable), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>
+<%= link_to t('actions.edit'), edit_observable_path(@observable), class: "btn btn-primary" %>
+<%= link_to t('actions.delete'), observable_path(@observable), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

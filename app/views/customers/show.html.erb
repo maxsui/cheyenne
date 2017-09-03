@@ -26,5 +26,5 @@ aucun
 <% end %>
 </div>
 
-<%= link_to 'Modifier', edit_customer_path(@customer), class: "btn btn-primary" %>
-<%= link_to 'Supprimer', customer_path(@customer), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" } %>
+<%= link_to t('actions.edit'), edit_customer_path(@customer), class: "btn btn-primary" %>
+<%= link_to t('actions.delete'), customer_path(@customer), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" } %>

@@ -1,0 +1,17 @@
+fr:
+  activerecord:
+    attributes:
+      customer:
+        name: 'Nom'
+  helpers:
+    submit:
+      customer:
+        create: "Ajouter"
+        update: "Modifier"
+  customers:
+    new:
+      title: "Ajouter un(e) Client(e)"
+    edit:
+      title: "Modifier %{name}"
+    index:
+      title: "Client(e)s"

@@ -29,3 +29,10 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+fr:
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+    required:
+      text: 'requis'
+      mark: '*'

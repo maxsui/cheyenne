@@ -1,4 +1,4 @@
-<% content_for :title, "Séance" %>
+<% content_for :title, t('.title', begin: l(@sceance.begin, format: :short)) %>
 
 <div class="row">
 	<div class="col-md-12">
@@ -55,5 +55,5 @@
 	</div>
 </div>
 
-<%= link_to 'Editer', edit_sceance_path(@sceance), class: "btn btn-primary" %>
-<%= link_to 'Supprimer', sceance_path(@sceance), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>
+<%= link_to t('actions.edit'), edit_sceance_path(@sceance), class: "btn btn-primary" %>
+<%= link_to t('actions.delete'), sceance_path(@sceance), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

@@ -1,0 +1,22 @@
+fr:
+  activerecord:
+    attributes:
+      goal:
+        name: Nom
+        goal_category: Catégorie
+        goal_category_id: Catégorie
+        observables: Observations
+  helpers:
+    submit:
+      goal:
+        create: "Ajouter"
+        update: "Modifier"
+  goals:
+    new:
+      title: "Ajouter un Objectif"
+    edit:
+      title: "Modifier l'Objectif"
+    index:
+      title: "Objectifs"
+    show:
+      title: "%{name}"
