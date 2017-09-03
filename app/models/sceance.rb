@@ -20,6 +20,14 @@ class Sceance < ApplicationRecord
     where(begin: (time.beginning_of_day)..(time.end_of_day))
   end
 
+  def self.after(time)
+    where(["begin > ?", time])
+  end
+
+  def self.before(time)
+    where(['"end" < ?', time])
+  end
+
   def duration
     self.end - self.begin
   end

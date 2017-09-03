@@ -1,13 +1,17 @@
 class SceancesController < ApplicationController
 
   def index
-    @date = Date.parse(params[:date]) rescue nil
-    @date ||= Date.today
+    # @sceances.order(:begin).page(params[:page]).per(20)
+    respond_to do |format|
+      format.json do
+        scope = Sceance
+        scope = scope.after(Time.parse(params[:start])) if params[:start]
+        scope = scope.before(Time.parse(params[:end])) if params[:end]
 
-    scope = Sceance
-    scope = scope.by_date(@date) if @date
-
-    @sceances = scope.order(:begin).page(params[:page]).per(20)
+        @sceances = scope.all
+      end
+      format.html
+    end
   end
 
   def show
