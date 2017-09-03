@@ -38,6 +38,8 @@ end
 users = {
   'sophie@equilinea.fr' => { name: "Sophie"},
   'blandine@lepiedaletrier.fr' => { name: "Blandine"},
+  'emmadebarnot@gmail.com' => { name: "Emma"},
+  'delphineferreirast@gmail.com' => { name: 'Delphine' }
 }
 
 users.each do |email, attributes|
