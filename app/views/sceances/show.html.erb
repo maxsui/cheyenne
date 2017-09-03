@@ -17,13 +17,21 @@
 					<% @sceance.sceance_customers.each do |sceance_customer| %>
 					<tr>
 						<td><%= sceance_customer.customer.name %></td>
-						<td><%= sceance_customer.observables.evaluated.count %> / <%= sceance_customer.observables.count %></td>
+						<td>
+							<% if sceance_customer.observables.present? %>
+  						  <%= sceance_customer.observables.evaluated.count %> / <%= sceance_customer.observables.count %>
+							<% else %>
+								Hors projet
+							<% end %>
+						</td>
 						<td>
 							<%= link_to sceance_sceance_customer_path(@sceance, sceance_customer) do %>
 							<i class="fa fa-eye fa-fw"></i>
 							<% end %>
-							<%= link_to sceance_customer.project do %>
-							<i class="fa fa-list fa-fw"></i>
+							<% if sceance_customer.project %>
+  							<%= link_to sceance_customer.project do %>
+	    						<i class="fa fa-list fa-fw"></i>
+			   				<% end %>
 							<% end %>
 						</td>
 					</tr>
