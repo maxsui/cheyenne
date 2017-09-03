@@ -11,8 +11,8 @@ fr:
         update: "Modifier"
   sceances:
     new:
-      title: "Ajouter une scéance"
+      title: "Ajouter une séance"
     index:
-      title: "Scéances"
+      title: "Séances"
     show:
-      title: "Scéance du %{begin}"
+      title: "Séance du %{begin}"
