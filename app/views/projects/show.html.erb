@@ -18,10 +18,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @project.project_goals.includes(:goal).each do |project_goal| %>
+					<% @project.goals.each do |goal| %>
 					<tr>
-						<td><%= project_goal.goal.name %></td>
-						<td class="note"><%= number_with_precision(@project.notes.fetch(project_goal.goal, '-'), precision: 1) %></td>
+						<td><%= goal.name %></td>
+						<td class="note"><%= number_with_precision(@project.notes.fetch(goal, '-'), precision: 1) %></td>
 					</tr>
 					<% end %>
 				</tbody>
