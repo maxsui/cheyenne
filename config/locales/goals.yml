@@ -5,7 +5,7 @@ fr:
         name: Nom
         goal_category: Catégorie
         goal_category_id: Catégorie
-        observables: Observations
+        observables: Observables
   helpers:
     submit:
       goal:

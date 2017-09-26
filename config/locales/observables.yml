@@ -1,5 +1,7 @@
 fr:
   activerecord:
+    models:
+      observable: Observable
     attributes:
       observable:
         name: Nom
@@ -11,10 +13,10 @@ fr:
         update: "Modifier"
   observables:
     new:
-      title: "Ajouter une Observation"
+      title: "Ajouter une Observable"
     edit:
-      title: "Modifier l'Observation"
+      title: "Modifier l'Observable"
     index:
-      title: "Observations"
+      title: "Observables"
     show:
       title: "%{name}"

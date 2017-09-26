@@ -7,7 +7,7 @@ fr:
         begin: Début
         end: Fin
         goals: Objectifs
-        observables: Observations
+        observables: Observables
   helpers:
     submit:
       project:
