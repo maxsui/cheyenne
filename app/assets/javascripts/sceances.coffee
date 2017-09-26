@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @loadCalendar = ->
-  console.log 'loadCalendar'
   $('#calendar').fullCalendar {
     locale: 'fr',
     themeSystem: 'bootstrap3',
