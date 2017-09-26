@@ -15,7 +15,7 @@ fr:
         update: "Modifier"
   observables:
     new:
-      title: "Ajouter une Observable"
+      title: "Ajouter un Observable"
     edit:
       title: "Modifier l'Observable"
     index:
