@@ -28,7 +28,6 @@
   }
 
 @clearCalendar = ->
-  console.log 'clearCalendar'
   $('#calendar').fullCalendar 'delete'
   # $('#event_calendar').html '';
 
