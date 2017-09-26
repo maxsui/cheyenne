@@ -1,0 +1,8 @@
+<%= form_tag '', method: :get do %>
+<div class="form-group input-group">
+	<%= text_field_tag :q, params[:q], class: "form-control" %>
+	<span class="input-group-btn">
+		<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+	</span>
+</div>
+<% end %>

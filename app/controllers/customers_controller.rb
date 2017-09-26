@@ -1,7 +1,11 @@
 class CustomersController < ApplicationController
 
   def index
-    @customers = Customer.order(:name).page(params[:page]).per(20)
+    scope = Customer
+    if params[:q]
+      scope = scope.where("name ilike ?", "%#{params[:q]}%")
+    end
+    @customers = scope.order(:name).page(params[:page]).per(20)
   end
 
   def show

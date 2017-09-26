@@ -4,14 +4,7 @@
   <%= link_to icon(:plus), new_observable_path, class: "btn btn-primary" %>
 <% end %>
 
-<%= form_tag '', method: :get do %>
-<div class="form-group input-group">
-<%= text_field_tag :q, params[:q], class: "form-control" %>
-<span class="input-group-btn">
-  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-</span>
-</div>
-<% end %>
+<%= search_form %>
 
 <div class="row">
 	<div class="col-md-12">
