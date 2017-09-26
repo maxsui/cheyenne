@@ -4,7 +4,11 @@
   <%= link_to icon(:plus), new_observable_path, class: "btn btn-primary" %>
 <% end %>
 
-<%= search_form %>
+<%= search_form do %>
+  <div class="form-group">
+	  <%= select_tag :observable_category_id, options_for_select([["Toutes", nil]]) + options_from_collection_for_select(@categories, "id", "name", params[:observable_category_id]), class: "form-control" %>
+	</div>
+<% end %>
 
 <div class="row">
 	<div class="col-md-12">

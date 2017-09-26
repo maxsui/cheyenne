@@ -2,10 +2,15 @@ class ObservablesController < ApplicationController
 
   def index
     scope = Observable
-    if params[:q]
+    if params[:q].present?
       scope = scope.where("name ilike ?", "%#{params[:q]}%")
     end
+    if params[:observable_category_id].present?
+      observable_category = ObservableCategory.find(params[:observable_category_id])
+      scope = scope.where(observable_category: observable_category)
+    end
     @observables = scope.includes(:goal_observables).order(:name).page(params[:page]).per(20)
+    @categories = ObservableCategory.all
   end
 
   def show

@@ -1,5 +1,5 @@
 module SearchHelper
-  def search_form
-    render 'helpers/search'
+  def search_form(&block)
+    render 'helpers/search', &block
   end
 end
