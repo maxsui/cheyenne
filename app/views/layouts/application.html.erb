@@ -69,6 +69,11 @@
 								<i class="fa fa-search fa-fw"></i> <%= Observable.model_name.human.pluralize %>
 								<% end %>
               </li>
+							<li>
+								<%= link_to observable_categories_path do %>
+								<i class="fa fa-hashtag fa-fw"></i> <%= ObservableCategory.model_name.human.pluralize %>
+								<% end %>
+              </li>
             </ul>
           </div>
         </div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :goal_categories
   resources :goals
   resources :observables
+  resources :observable_categories
   resources :projects do
     put 'toogle_observable'
   end

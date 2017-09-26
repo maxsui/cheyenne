@@ -5,6 +5,8 @@ fr:
     attributes:
       observable:
         name: Nom
+        observable_category: "Catégorie d'observable"
+        observable_category_id: "Catégorie d'observable"
         goals: Objectifs associés
   helpers:
     submit:

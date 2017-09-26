@@ -1,0 +1,6 @@
+<% content_for :title, "Détail de l'Objectif" %>
+
+<p><%= @observable.name %></p>
+
+<%= link_to t('actions.edit'), edit_observable_path(@observable), class: "btn btn-primary" %>
+<%= link_to t('actions.delete'), observable_path(@observable), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

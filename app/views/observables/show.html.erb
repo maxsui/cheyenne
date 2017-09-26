@@ -1,5 +1,7 @@
 <% content_for :title, t('.title', name: @observable.name) %>
 
+<p><label><%= Observable.human_attribute_name(:observable_category) %>:</label> <%= @observable.observable_category.try :name %></p>
+
 <h2><%= Observable.human_attribute_name(:goals) %></h2>
 
 <ul>

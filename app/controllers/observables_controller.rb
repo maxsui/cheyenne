@@ -15,6 +15,7 @@ class ObservablesController < ApplicationController
   def new
     @observable = Observable.new
     @goal_categories = GoalCategory.all
+    @categories = ObservableCategory.all
   end
 
   def create
@@ -23,6 +24,7 @@ class ObservablesController < ApplicationController
       redirect_to @observable
     else
       @goal_categories = GoalCategory.all
+      @categories = ObservableCategory.all
       render "new"
     end
   end
@@ -30,6 +32,7 @@ class ObservablesController < ApplicationController
   def edit
     @observable = Observable.find params[:id]
     @goal_categories = GoalCategory.all
+    @categories = ObservableCategory.all
   end
 
   def update
@@ -39,6 +42,7 @@ class ObservablesController < ApplicationController
       redirect_to @observable
     else
       @goal_categories = GoalCategory.all
+      @categories = ObservableCategory.all
       render "edit"
     end
   end
@@ -53,7 +57,7 @@ class ObservablesController < ApplicationController
   private
 
   def observable_params
-    params.require(:observable).permit(:name, goal_observables_attributes: [:id, :goal_id, :_destroy])
+    params.require(:observable).permit(:name, :observable_category_id, goal_observables_attributes: [:id, :goal_id, :_destroy])
   end
 
 end

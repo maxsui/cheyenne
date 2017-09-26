@@ -1,0 +1,20 @@
+fr:
+  activerecord:
+    models:
+      observable_category: "Catégorie d'Observable"
+    attributes:
+      observable_category:
+        name: Nom
+        observables: Observables
+  helpers:
+    submit:
+      observable_category:
+        create: "Ajouter"
+        update: "Modifier"
+  observable_categories:
+    new:
+      title: "Ajouter une Catégorie d'Observables"
+    edit:
+      title: "Modifier la Catégorie d'Observables"
+    index:
+      title: "Catégorie d'Observables"
