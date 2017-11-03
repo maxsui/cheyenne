@@ -1,0 +1,21 @@
+<%= simple_form_for @group do |f| %>
+  <%= f.input :name %>
+
+	<h3>Membres
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :group_memberships, "data-association-insertion-node": '#group_memberships', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="group_memberships">
+		<% if @group.errors.key?(:group_memberships) %>
+		<% @group.errors.full_messages_for(:group_memberships).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
+		<%= f.simple_fields_for :group_memberships do |group_membership| %>
+      <%= render 'group_membership_fields', f: group_membership %>
+		<% end %>
+	</div>
+
+  <%= f.button :submit %>
+<% end %>

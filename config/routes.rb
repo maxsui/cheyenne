@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :customers
+  resources :groups
   resources :goal_categories
   resources :goals
   resources :observables

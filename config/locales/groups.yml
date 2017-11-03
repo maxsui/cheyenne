@@ -1,0 +1,17 @@
+fr:
+  activerecord:
+    attributes:
+      group:
+        name: 'Nom'
+  helpers:
+    submit:
+      group:
+        create: "Ajouter"
+        update: "Modifier"
+  groups:
+    new:
+      title: "Ajouter un Groupe"
+    edit:
+      title: "Modifier %{name}"
+    index:
+      title: "Groupes"

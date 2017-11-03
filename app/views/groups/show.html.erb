@@ -1,0 +1,16 @@
+<% content_for :title, @group.name %>
+
+<div class="row">
+	<div class="col-md-12">
+		<h3>Membres</h3>
+
+		<ul>
+			<% @group.customers.each do |customer| %>
+			<li><%= customer.name %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+
+<%= link_to t('actions.edit'), edit_group_path(@group), class: "btn btn-primary" %>
+<%= link_to t('actions.delete'), group_path(@group), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" } %>
