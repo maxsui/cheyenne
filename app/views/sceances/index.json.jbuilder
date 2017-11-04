@@ -1,6 +1,6 @@
 json.array! @sceances do |sceance|
   json.(sceance, :id)
-  json.title sceance.customers.map(&:name).join(' - ')
+  json.title (sceance.customers + sceance.groups).map(&:name).join(' - ')
   json.allDay false
 
   json.start sceance.begin

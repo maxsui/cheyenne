@@ -1,5 +1,7 @@
 class SceancesController < ApplicationController
 
+  before_action :load_associations, only: [:new, :create, :edit, :update]
+
   def index
     # @sceances.order(:begin).page(params[:page]).per(20)
     respond_to do |format|
@@ -20,8 +22,6 @@ class SceancesController < ApplicationController
 
   def new
     @sceance = Sceance.new
-    @customers = Customer.order(:name).all
-    @users = User.order(:name).all
   end
 
   def create
@@ -29,16 +29,12 @@ class SceancesController < ApplicationController
     if @sceance.save
       redirect_to @sceance
     else
-      @customers = Customer.order(:name).all
-      @users = User.order(:name).all
       render "new"
     end
   end
 
   def edit
     @sceance = Sceance.find params[:id]
-    @customers = Customer.order(:name).all
-    @users = User.order(:name).all
   end
 
   def update
@@ -47,8 +43,6 @@ class SceancesController < ApplicationController
     if @sceance.update sceance_params
       redirect_to @sceance
     else
-      @customers = Customer.order(:name).all
-      @users = User.order(:name).all
       render "edit"
     end
   end
@@ -62,8 +56,14 @@ class SceancesController < ApplicationController
 
   private
 
+  def load_associations
+    @customers = Customer.order(:name).all
+    @users = User.order(:name).all
+    @groups = Group.order(:name).all
+  end
+
   def sceance_params
-    params.require(:sceance).permit(:begin, :end, sceance_customers_attributes: [:id, :customer_id, :_destroy], sceance_users_attributes: [:id, :user_id, :_destroy])
+    params.require(:sceance).permit(:begin, :end, sceance_customers_attributes: [:id, :customer_id, :_destroy], sceance_users_attributes: [:id, :user_id, :_destroy], sceance_groups_attributes: [:id, :group_id, :_destroy])
   end
 
 end

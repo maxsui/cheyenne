@@ -1,8 +1,11 @@
 fr:
   activerecord:
+    models:
+      group: Groupe
     attributes:
       group:
         name: 'Nom'
+        size: 'Taille'
   helpers:
     submit:
       group:

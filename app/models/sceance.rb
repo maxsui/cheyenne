@@ -9,11 +9,23 @@ class Sceance < ApplicationRecord
 
   has_many :users, through: :sceance_users
 
+  has_many :sceance_groups
+  accepts_nested_attributes_for :sceance_groups, reject_if: :all_blank, allow_destroy: true
+
+  has_many :groups, through: :sceance_groups
+
   validates :begin, presence: true
   validates :end, presence: true
 
-  validates :sceance_customers, presence: true
-  validates :sceance_users, presence: true
+  validate :check_no_customer
+#  validates :sceance_users, presence: true
+
+  def check_no_customer
+    if sceance_customers.empty? and sceance_groups.empty?
+      errors.add :sceance_customers, :empty
+      errors.add :sceance_groups, :empty
+    end
+  end
 
   def self.by_date(date)
     time = date.to_time

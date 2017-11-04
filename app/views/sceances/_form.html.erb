@@ -18,6 +18,22 @@
 		<% end %>
 	</div>
 
+	<h3><%= Group.model_name.human.pluralize %>
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :sceance_groups, "data-association-insertion-node": '#sceance_groups', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="sceance_groups">
+		<% if @sceance.errors.key?(:sceance_groups) %>
+		<% @sceance.errors.full_messages_for(:sceance_groups).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
+		<%= f.simple_fields_for :sceance_groups do |sceance_group| %>
+      <%= render 'sceance_group_fields', f: sceance_group %>
+		<% end %>
+	</div>
+
 	<h3>Encadrants
 		<span class="actions">
 			<%= link_to_add_association icon(:plus), f, :sceance_users, "data-association-insertion-node": '#sceance_users', class: "btn btn-default" %>
