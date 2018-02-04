@@ -1,15 +1,15 @@
 fr:
   activerecord:
     attributes:
-      sceance:
+      seance:
         begin: 'Début'
         end: 'Fin'
   helpers:
     submit:
-      sceance:
+      seance:
         create: "Ajouter"
         update: "Modifier"
-  sceances:
+  seances:
     new:
       title: "Ajouter une séance"
     index:

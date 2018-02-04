@@ -22,7 +22,7 @@
     minTime: '08:00:00',
     maxTime: '20:00:00',
     events: {
-      url: '/sceances.json'
+      url: '/seances.json'
     }
   }
 

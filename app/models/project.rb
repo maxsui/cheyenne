@@ -18,8 +18,8 @@ class Project < ApplicationRecord
 
   validate :check_range_conflict
 
-  def sceance_observables
-    SceanceCustomerObservable.joins(project_observable: :project).where("projects.id = ?", id)
+  def seance_observables
+    SeanceCustomerObservable.joins(project_observable: :project).where("projects.id = ?", id)
   end
 
   scope :by_date, ->(date) { where("?::date <@ daterange(projects.begin, projects.end,'[]')", date) }
@@ -54,7 +54,7 @@ class Project < ApplicationRecord
   end
 
   def compute_notes
-    rows = sceance_observables.noted.joins(:goals).where('goals.id' => goal_ids).group("goals.id").average(:note).map do |goal_id, note|
+    rows = seance_observables.noted.joins(:goals).where('goals.id' => goal_ids).group("goals.id").average(:note).map do |goal_id, note|
       [Goal.find(goal_id), note]
     end
     Hash[rows]

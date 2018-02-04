@@ -1,0 +1,43 @@
+<% content_for :title, "Séance de #{@seance_customer.customer.name}" %>
+
+<div class="row">
+	<div class="col-md-12">
+		<% if @seance_customer.project %>
+  		Projet du <%= l @seance_customer.project.begin %> au <%= l @seance_customer.project.end %></p>
+		<% else %>
+  		Hors projet
+		<% end %>
+	</div>
+</div>
+
+<% if @seance_customer.observables.present? %>
+<h3><%= Observable.model_name.human.pluralize %></h3>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="table-responsive">
+			<table id="project_observables" class="table table-striped">
+				<tbody>
+					<% @seance_customer.observables.each do |seance_observable| %>
+					<tr id="seance_observable_<%= seance_observable.id %>" class="seance_observable noted-<%= seance_customer_observable_note_label(seance_observable) %>">
+						<td class="name"><%= seance_observable.observable.name %></td>
+						<td class="note">
+							<% seance_observable.observable.candidates.each do |candidate| %>
+							  <span class="note-<%= seance_customer_observable_note_label(candidate) %>">
+  								<%= link_to_note_seance_customer_observable seance_observable, candidate %>
+								</span>
+							<% end %>
+							<span class="note-<%= seance_customer_observable_note_label(-1) %>">
+								<%= link_to_note_seance_customer_observable seance_observable, -1, '>>' %>
+							</span>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<%= link_to "Retour", @seance_customer.seance %>

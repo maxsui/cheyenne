@@ -1,9 +1,9 @@
-class SceanceCustomer < ApplicationRecord
-  belongs_to :sceance
+class SeanceCustomer < ApplicationRecord
+  belongs_to :seance
   belongs_to :customer
   belongs_to :project, optional: true
 
-  has_many :observables, class_name: 'SceanceCustomerObservable'
+  has_many :observables, class_name: 'SeanceCustomerObservable'
 
   before_validation :associate_project
   before_validation :complete_observables
@@ -11,7 +11,7 @@ class SceanceCustomer < ApplicationRecord
   private
 
   def associate_project
-    self.project = customer.projects.by_date(sceance.date).first if customer
+    self.project = customer.projects.by_date(seance.date).first if customer
   end
 
   def complete_observables

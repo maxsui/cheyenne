@@ -1,0 +1,54 @@
+<%= simple_form_for @seance do |f| %>
+  <%= f.input :begin, start_year: Date.today.year - 1, end_year: Date.today.year + 1, minute_step: 15 %>
+	<%= f.input :end, minute_step: 15, default: 1.hour.from_now %>
+
+	<h3>Participants
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :seance_customers, "data-association-insertion-node": '#seance_customers', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="seance_customers">
+		<% if @seance.errors.key?(:seance_customers) %>
+		<% @seance.errors.full_messages_for(:seance_customers).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
+		<%= f.simple_fields_for :seance_customers do |seance_customer| %>
+      <%= render 'seance_customer_fields', f: seance_customer %>
+		<% end %>
+	</div>
+
+	<h3><%= Group.model_name.human.pluralize %>
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :seance_groups, "data-association-insertion-node": '#seance_groups', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="seance_groups">
+		<% if @seance.errors.key?(:seance_groups) %>
+		<% @seance.errors.full_messages_for(:seance_groups).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
+		<%= f.simple_fields_for :seance_groups do |seance_group| %>
+      <%= render 'seance_group_fields', f: seance_group %>
+		<% end %>
+	</div>
+
+	<h3>Encadrants
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :seance_users, "data-association-insertion-node": '#seance_users', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="seance_users">
+		<% if @seance.errors.key?(:seance_users) %>
+		<% @seance.errors.full_messages_for(:seance_users).each do |message| %>
+  		<div class="alert alert-danger"><%= message %></div>
+ 	  <% end %>
+		<% end %>
+		<%= f.simple_fields_for :seance_users do |seance_user| %>
+      <%= render 'seance_user_fields', f: seance_user %>
+		<% end %>
+	</div>
+
+  <%= f.button :submit %>
+<% end %>
