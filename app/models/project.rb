@@ -10,6 +10,9 @@ class Project < ApplicationRecord
   # accepts_nested_attributes_for :project_observables, reject_if: :all_blank, allow_destroy: true
   has_many :observables, through: :project_observables
 
+  has_many :seance_customers, -> (project) { where(customer_id: project.customer_id) }
+  has_many :seances, through: :seance_customers
+
   validates :begin, presence: true
   validates :end, presence: true
 

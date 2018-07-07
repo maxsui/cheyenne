@@ -3,7 +3,9 @@
 <div class="row">
 	<div class="col-md-12">
 		<% if @seance_customer.project %>
-  		Projet du <%= l @seance_customer.project.begin %> au <%= l @seance_customer.project.end %></p>
+      <%= link_to @seance_customer.project do %>
+        Projet du <%= l @seance_customer.project.begin %> au <%= l @seance_customer.project.end %>
+      <% end %>
 		<% else %>
   		Hors projet
 		<% end %>

@@ -3,7 +3,6 @@ class SeancesController < ApplicationController
   before_action :load_associations, only: [:new, :create, :edit, :update]
 
   def index
-    # @seances.order(:begin).page(params[:page]).per(20)
     respond_to do |format|
       format.json do
         scope = Seance

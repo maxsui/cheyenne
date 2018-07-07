@@ -1,0 +1,50 @@
+<% content_for :title, link_to(@parent_name, @parent) + " > Séances" %>
+
+<% content_for :actions do %>
+  <!%= link_to icon(:plus), new_seance_path, class: "btn btn-primary" %>
+<% end %>
+
+<div class="row">
+	<div class="col-md-12">
+		<% if @seances.present? %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Début</th>
+						<th>Durée</th>
+						<th>Participants</th>
+						<th>Encadrants</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @seances.each do |seance| %>
+					<tr>
+						<td><%= l seance.begin, format: (@date ? "%Hh%M" : :short) %></td>
+						<td><%= human_duration seance.duration %></td>
+						<td><%= seance.customers.count %></td>
+						<td><%= seance.users.map(&:name).join(',') %></td>
+						<td>
+							<%= link_to seance_path(seance) do %>
+							<i class="fa fa-eye fa-fw"></i>
+							<% end %>
+							<%= link_to edit_seance_path(seance) do %>
+							<i class="fa fa-edit fa-fw"></i>
+							<% end %>
+							<%= link_to seance_path(seance), method: :delete, data: { confirm: "Etes vous sûr ?" } do %>
+							<i class="fa fa-trash-o fa-fw"></i>
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<% else %>
+		Aucune séance
+		<% end %>
+	</div>
+</div>
+
+<%= paginate @seances %>
