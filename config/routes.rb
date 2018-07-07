@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     put 'toogle_observable'
   end
   resources :seances do
+    put 'confirm', on: :member
     resources :seance_customers do
       put 'note', on: :member
     end

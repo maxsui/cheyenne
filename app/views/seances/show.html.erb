@@ -16,7 +16,7 @@
 				<tbody>
 					<% @seance.seance_customers.each do |seance_customer| %>
 					<tr>
-						<td><%= seance_customer.customer.name %></td>
+						<td><%= seance_customer.customer.name %> <% if seance_customer.group %>(<%= seance_customer.group.name %>)<% end %></td>
 						<td>
 							<% if seance_customer.observables.present? %>
   						  <%= seance_customer.observables.evaluated.count %> / <%= seance_customer.observables.count %>
@@ -36,6 +36,14 @@
 						</td>
 					</tr>
 					<% end %>
+
+          <% @seance.candidates.each do |candidate| %>
+					  <tr class="candidate">
+						  <td><%= candidate.name %> (<%= candidate.groups.map(&:name).join(',') %>)</td>
+						  <td>-</td>
+						  <td><%= link_to 'Confirmer', confirm_seance_path(@seance, candidate_id: candidate.id, group_id: candidate.default_group.id), method: :put %></td>
+					  </tr>
+          <% end %>
 				</tbody>
 			</table>
 		</div>
@@ -45,20 +53,13 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<h3><%= Group.model_name.human.pluralize %></h3>
-		<% if @seance.groups.present? %>
-		<div class="table-responsive">
-			<table class="table table-striped">
-				<tbody>
-					<% @seance.seance_groups.each do |seance_group| %>
-					<tr>
-						<td><%= seance_group.group.name %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-		<% end %>
+		<h3>Groupes</h3>
+
+		<ul>
+			<% @seance.groups.each do |group| %>
+			<li><%= group.name %></li>
+			<% end %>
+		</ul>
 	</div>
 </div>
 

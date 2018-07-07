@@ -54,6 +54,13 @@ class SeancesController < ApplicationController
     redirect_to seances_path
   end
 
+  def confirm
+    @seance = Seance.find params[:id]
+    @seance.seance_customers.create customer: Customer.find(params[:candidate_id]), group: Group.find(params[:group_id])
+
+    redirect_to @seance
+  end
+
   private
 
   def load_associations

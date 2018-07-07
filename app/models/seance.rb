@@ -47,4 +47,44 @@ class Seance < ApplicationRecord
   def date
     self.begin.to_date
   end
+
+  def candidates
+    @candidates ||= Candidate.create(self)
+  end
+
+  class Candidate
+
+    attr_reader :customer
+
+    def initialize(customer)
+      @customer = customer
+    end
+
+    delegate :id, :name, to: :customer
+
+    def groups
+      @groups ||= []
+    end
+
+    def default_group
+      groups.first unless groups.many?
+    end
+
+    def self.create(seance)
+      candidates = {}
+
+      seance.seance_groups.each do |seance_group|
+        seance_group.group.customers.each do |customer|
+          unless seance.customers.include? customer
+            candidate = (candidates[customer.id] ||= Candidate.new(customer))
+            candidate.groups << seance_group.group
+          end
+        end
+      end
+
+      candidates.values.sort_by(&:name)
+    end
+
+  end
+
 end
