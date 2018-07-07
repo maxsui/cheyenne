@@ -7,7 +7,7 @@ Projet en cours :
     Du <%= l project.begin %> au <%= l project.end %>
   <% end %>
 <% else %>
-aucun
+aucun (<%= link_to 'Créer un projet', new_project_path(customer_id: @customer.id) %>)
 <% end %>
 </div>
 
