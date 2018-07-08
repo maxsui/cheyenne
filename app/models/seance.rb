@@ -27,6 +27,8 @@ class Seance < ApplicationRecord
     end
   end
 
+  scope :by_period, ->(range) { where(begin: range) }
+
   def self.by_date(date)
     time = date.to_time
     where(begin: (time.beginning_of_day)..(time.end_of_day))

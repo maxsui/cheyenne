@@ -4,7 +4,7 @@
 
 <p>Du <%= l @project.begin %> au <%= l @project.end %></p>
 
-<p><label>Scéances associées:</label> <%= link_to_if @project.seances.present?, pluralize(@project.seances.count, "scéance"), project_seances_path(@project.id) %></p>
+<p><label>Séances associées:</label> <%= link_to_if @project.seances.present?, pluralize(@project.seances.count, "séance"), project_seances_path(@project.id) %></p>
 
 <h3>Objectifs</h3>
 

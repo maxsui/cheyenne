@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   # accepts_nested_attributes_for :project_observables, reject_if: :all_blank, allow_destroy: true
   has_many :observables, through: :project_observables
 
-  has_many :seance_customers, -> (project) { where(customer_id: project.customer_id) }
+  has_many :seance_customers, dependent: :nullify
   has_many :seances, through: :seance_customers
 
   validates :begin, presence: true
@@ -36,6 +36,13 @@ class Project < ApplicationRecord
 
   before_validation :complete_observables
 
+  after_save :update_seances_on_period
+  before_destroy :unassociate_seances
+
+  def period
+    Range.new(self.begin, self.end)
+  end
+
   def goal_ids
     project_goals.map(&:goal_id)
   end
@@ -47,7 +54,7 @@ class Project < ApplicationRecord
   end
 
   def other_projects_in_conflict
-    scope = self.class.by_period(Range.new(self.begin, self.end)).by_customer(customer)
+    scope = self.class.by_period(period).by_customer(customer)
     scope = scope.where.not(id: id) if persisted?
     scope
   end
@@ -64,6 +71,20 @@ class Project < ApplicationRecord
   end
 
   private
+
+  # Associate this projet to all unassociated SeanceCustomers
+  def update_seances_on_period
+    Rails.logger.debug customer.seance_customers.by_period(period).where(project_id: nil).inspect
+    customer.seance_customers.by_period(period).where(project_id: nil).find_each do |seance_customer|
+      seance_customer.associate_project self
+      seance_customer.save
+    end
+  end
+
+  def unassociate_seances
+    seance_observables.destroy_all
+    project_observables.destroy_all
+  end
 
   def check_range_conflict
     other_projects_in_conflict.each do |project|
