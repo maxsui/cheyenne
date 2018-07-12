@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<h3>Participants</h3>
-		<% if @seance.customers.present? %>
+		<% if @seance.customers.present? || @seance.candidates.present? %>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<tbody>
