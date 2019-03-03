@@ -25,6 +25,7 @@ class GoalsController < ApplicationController
 
   def edit
     @goal = Goal.find params[:id]
+    @observable_categories = ObservableCategory.all
     @categories = GoalCategory.all
   end
 
@@ -32,8 +33,9 @@ class GoalsController < ApplicationController
     @goal = Goal.find params[:id]
 
     if @goal.update goal_params
-      redirect_to goals_path
+      redirect_to goal_path(@goal)
     else
+      @observable_categories = ObservableCategory.all
       @categories = GoalCategory.all
       render "edit"
     end
@@ -49,7 +51,7 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:name, :goal_category_id)
+    params.require(:goal).permit(:name, :goal_category_id, goal_observables_attributes: [:id, :observable_id, :_destroy])
   end
 
 end

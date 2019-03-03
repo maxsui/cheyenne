@@ -2,5 +2,13 @@
 
 <p><label><%= Goal.human_attribute_name(:goal_category) %>:</label> <%= @goal.goal_category.try :name %></p>
 
+<h2><%= Goal.human_attribute_name(:observables) %></h2>
+
+<ul>
+<% @goal.observables.each do |observable| %>
+<li><%= observable.name %></li>
+<% end %>
+</ul>
+
 <%= link_to t('actions.edit'), edit_goal_path(@goal), class: "btn btn-primary" %>
 <%= link_to t('actions.delete'), goal_path(@goal), class: "btn btn-default", method: :delete, data: { confirm: "Etes vous sûr ?" }%>

@@ -3,7 +3,7 @@
 
 	<%= f.input :observable_category_id, collection: @categories, include_blank: false %>
 
-	<h3>Objectifs associés
+	<h3><%= Observable.human_attribute_name(:goals) %>
 		<span class="actions">
 			<%= link_to_add_association icon(:plus), f, :goal_observables, "data-association-insertion-node": '#goal_observables', class: "btn btn-default" %>
 		</span>
@@ -13,5 +13,6 @@
     <%= render 'goal_observable_fields', f: goal_observable %>
 		<% end %>
 	</div>
+
   <%= f.button :submit %>
 <% end %>

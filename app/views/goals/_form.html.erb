@@ -1,5 +1,17 @@
 <%= simple_form_for @goal do |f| %>
   <%= f.input :name %>
 	<%= f.input :goal_category_id, collection: @categories, include_blank: false %>
+
+	<h3><%= Goal.human_attribute_name(:observables) %>
+		<span class="actions">
+			<%= link_to_add_association icon(:plus), f, :goal_observables, "data-association-insertion-node": '#goal_observables', class: "btn btn-default" %>
+		</span>
+	</h3>
+	<div id="goal_observables">
+		<%= f.simple_fields_for :goal_observables do |observable_goal| %>
+    <%= render 'goal_observable_fields', f: observable_goal %>
+		<% end %>
+	</div>
+
   <%= f.button :submit %>
 <% end %>
