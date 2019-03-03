@@ -8,6 +8,10 @@ class SeanceCustomerObservable < ApplicationRecord
   scope :evaluated, ->() { where.not note: nil }
   scope :noted, ->() { where "note >= 0" }
 
+  def self.between(date_range)
+    joins(seance_customer: :seance).where("seances.begin": date_range)
+  end
+
   def ignored?
     note == -1
   end

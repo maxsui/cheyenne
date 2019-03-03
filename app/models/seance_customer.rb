@@ -19,6 +19,17 @@ class SeanceCustomer < ApplicationRecord
     complete_observables
   end
 
+  def notes
+    @notes ||= compute_notes
+  end
+
+  def compute_notes
+    rows = observables.noted.joins(:goals).group("goals.id").average(:note).map do |goal_id, note|
+      [goal_id, note]
+    end
+    Hash[rows]
+  end
+
   private
 
   def associate_default_project

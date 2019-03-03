@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180707131838) do
+ActiveRecord::Schema.define(version: 20190127141546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,11 @@ ActiveRecord::Schema.define(version: 20180707131838) do
     t.index ["customer_id"], name: "index_projects_on_customer_id"
   end
 
+  create_table "schedulings", force: :cascade do |t|
+    t.datetime "end_date"
+    t.integer "repeat"
+  end
+
   create_table "seance_customer_observables", force: :cascade do |t|
     t.bigint "seance_customer_id"
     t.bigint "project_observable_id"
@@ -149,6 +154,8 @@ ActiveRecord::Schema.define(version: 20180707131838) do
     t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "scheduling_id"
+    t.index ["scheduling_id"], name: "index_seances_on_scheduling_id"
   end
 
   create_table "users", force: :cascade do |t|

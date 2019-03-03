@@ -24,4 +24,7 @@ fr:
       title: "Détails du projet de %{name}"
       goals_table:
         goal: Objectif
-        note: Moyenne (sur 3)
+        note: Moyenne
+        first_note: 1ère période
+        second_note: 2ème période
+        third_note: 3ème période

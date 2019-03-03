@@ -14,11 +14,13 @@ class Seance < ApplicationRecord
 
   has_many :groups, through: :seance_groups
 
+  belongs_to :scheduling, optional: true
+
   validates :begin, presence: true
   validates :end, presence: true
 
   validate :check_no_customer
-#  validates :seance_users, presence: true
+  # validates :seance_users, presence: true
 
   def check_no_customer
     if seance_customers.empty? and seance_groups.empty?
@@ -47,7 +49,7 @@ class Seance < ApplicationRecord
   end
 
   def date
-    self.begin.to_date
+    self.begin&.to_date
   end
 
   def candidates

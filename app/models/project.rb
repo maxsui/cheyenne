@@ -63,11 +63,28 @@ class Project < ApplicationRecord
     @notes ||= compute_notes
   end
 
-  def compute_notes
-    rows = seance_observables.noted.joins(:goals).where('goals.id' => goal_ids).group("goals.id").average(:note).map do |goal_id, note|
+  def notes_between(date_range)
+    (@notes_between ||= {})[date_range] ||= compute_notes(date_range)
+  end
+
+  def notes_part(part)
+    part_length = (self.end - self.begin) / 3
+    part_begin = self.begin + (part - 1) * part_length
+
+    date_range = Range.new(part_begin, part_begin + part_length)
+    notes_between(date_range)
+  end
+
+  def compute_notes(date_range = nil)
+    seance_observables_in_range = date_range ? seance_observables.between(date_range) : seance_observables
+    rows = seance_observables_in_range.noted.joins(:goals).where('goals.id' => goal_ids).group("goals.id").average(:note).map do |goal_id, note|
       [Goal.find(goal_id), note]
     end
     Hash[rows]
+  end
+
+  def all_notes(goal)
+    seance_observables.noted.joins([:goals, {seance_customer: :seance}]).where('goals.id' => goal.id).order("seances.begin").group("seances.id").average(:note).values
   end
 
   private

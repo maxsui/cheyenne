@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     put 'toogle_observable'
     resources :seances, controller: 'nested_seances'
   end
+  resources :seance_updates
   resources :seances do
     put 'confirm', on: :member
     resources :seance_customers do
