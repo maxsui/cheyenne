@@ -36,10 +36,7 @@ if Customer.count == 0
 end
 
 users = {
-  'sophie@equilinea.fr' => { name: "Sophie"},
-  'blandine@lepiedaletrier.fr' => { name: "Blandine"},
-  'emmadebarnot@gmail.com' => { name: "Emma"},
-  'delphineferreirast@gmail.com' => { name: 'Delphine' }
+  'dummy@example.com' => { name: "Dummy"}
 }
 
 users.each do |email, attributes|
