@@ -21,3 +21,4 @@
 //= require fullcalendar
 //= require fullcalendar/lang/fr
 //= require_tree .
+//= require Chart.min
