@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/albanpeignier/fullcalendar-rails.git
+  remote: http://github.com/albanpeignier/fullcalendar-rails.git
   revision: be71e28e06e7b8c9a6c041922bdcfe3588ea957e
   branch: upgrade-to-3.5.0
   specs:
@@ -9,14 +9,14 @@ GIT
       momentjs-rails (>= 2.9.0)
 
 GIT
-  remote: https://github.com/rails/sass-rails.git
+  remote: http://github.com/rails/sass-rails.git
   revision: 551251bddec4d6b75446cb1c1630ed26e5318f8e
   specs:
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actioncable (5.1.7)
       actionpack (= 5.1.7)
@@ -91,13 +91,14 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.9.3)
+    devise-i18n (1.9.2)
       devise (>= 4.7.1)
     erubi (1.10.0)
     execjs (2.7.0)
     faker (2.2.1)
       i18n (>= 0.8)
-    ffi (1.15.0-x64-mingw32)
+    ffi (1.14.2)
+    ffi (1.14.2-x64-mingw32)
     font-awesome-rails (4.7.0.7)
       railties (>= 3.2, < 7)
     globalid (0.4.2)
@@ -138,13 +139,18 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.4)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
-    nio4r (2.5.7)
-    nokogiri (1.11.2-x64-mingw32)
+    nio4r (2.5.5)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
+    nokogiri (1.11.1-x64-mingw32)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.2.3)
     pg (1.2.3-x64-mingw32)
     public_suffix (4.0.6)
     puma (3.12.6)
@@ -187,6 +193,8 @@ GEM
       railties (>= 5.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     sassc (2.4.0-x64-mingw32)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -238,6 +246,7 @@ GEM
       nokogiri (~> 1.3)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
@@ -247,7 +256,7 @@ DEPENDENCIES
   chart-js-rails
   cocoon
   coffee-rails (~> 4.2)
-  devise (>= 4.4.0)
+  devise
   devise-i18n
   faker
   fullcalendar-rails!
@@ -271,4 +280,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   2.2.11
+   1.15.3
