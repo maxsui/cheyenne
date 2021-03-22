@@ -16,9 +16,8 @@
 //= require jquery_ujs
 //= require bootstrap_sb_admin_base_v2
 //= require cocoon
-//= require Chart
+//= require Chart.min
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/lang/fr
 //= require_tree .
-//= require Chart.min
