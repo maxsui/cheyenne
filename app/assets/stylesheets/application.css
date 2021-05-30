@@ -17,9 +17,10 @@
  *= require fullcalendar
  */
 
- .test1 {background-color: #C45418;
-            border-color: gray"
+ .test1 {background-color: #C45418 !important;
+            border-color: #7c7c7c !important
  }
- .test2 {background-color: #acacac;
-    border-color: gray"
+ .test2 {
+    background-color: #acacac !important;
+    border-color: #7c7c7c !important
 }
