@@ -16,3 +16,10 @@
  *= require bootstrap_sb_admin_base_v2
  *= require fullcalendar
  */
+
+ .test1 {background-color: #C45418;
+            border-color: gray"
+ }
+ .test2 {background-color: #acacac;
+    border-color: gray"
+}
